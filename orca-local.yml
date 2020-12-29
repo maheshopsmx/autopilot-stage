@@ -1,0 +1,48 @@
+job:
+  preconfigured:
+    kubernetes:
+      - label: jmxRegressionStage
+        type: customJobjmxRegressionStage
+        description: Stage to perform regression testing of Application
+        cloudProvider: kubernetes
+        account: default
+        waitForCompletion: true
+        application: spin
+        parameters:
+          - label: basetime
+            name: Organization name of the Git Account
+            description: time 12/28/2020 2:00:00 PM
+            mapping: 'manifest.spec.template.spec.containers[0].args[0]'
+            defaultValue: ""
+          - label: repo
+            name: Repo name of the Git Account
+            description: time 12/28/2022 5:00:00 PM
+            mapping: 'manifest.spec.template.spec.containers[0].args[1]'
+            defaultValue: ""
+        manifest:
+          apiVersion: batch/v1
+          kind: Job
+          metadata:                                                                 
+            labels:                                                                 
+              spinnakerlabel: deljob                                                
+            name: jmeter
+            namespace: oes
+          spec:
+            backoffLimit: 0
+            template:
+              spec:
+                restartPolicy: Never
+                containers:
+                  - name: jmeter
+                    args:
+                       -
+                       -
+                       -
+                       -
+                       -
+                       -
+                       -
+                       -
+                       -
+                    image: 'maheshopsmx/autopilot:v1'
+                    imagePullPolicy: Always
