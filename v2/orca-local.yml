@@ -1,9 +1,9 @@
 job:
   preconfigured:
     kubernetes:
-      - label: jmxRegressionStage
-        type: customJobjmxRegressionStage
-        description: Stage to perform regression testing of Application
+      - label: Autopilot
+        type: customJob for autopilot analysis
+        description: Stage to perform canary analysis
         cloudProvider: kubernetes
         account: default
         waitForCompletion: true
