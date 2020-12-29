@@ -1,0 +1,52 @@
+{
+  "application": "$APPNAME",
+  "canaryConfig": {
+    "canaryAnalysisConfig": {
+      "beginCanaryAnalysisAfterMins": "$CANARYTIME",
+      "canaryAnalysisIntervalMins": "$CANARYINTERVAL",
+      "notificationHours": []
+    },
+    "canaryHealthCheckHandler": {
+      "minimumCanaryResultScore": "$MINSCORE",
+      "minimumMetricsResultScore": "$MAXSCORE"
+    },
+    "canarySuccessCriteria": {
+      "canaryResultScore": "$CANARYRESULT",
+      "successMetricsResultScore": "SUCESSMETRICRESULT"
+    },
+    "combinedCanaryResultStrategy": "AGGREGATE",
+    "lifetimeHours": "$LIFETIME",
+    "name": "admin"
+  },
+  "canaryDeployments": [
+    {
+      "baseline": {
+        "log": {
+          "$LOGSVC": {
+            "$LOGKEY": "$LOGVALUE"
+          }
+        },
+        "metric": {
+          "$METRICSVC": {
+            "$METRICKEY": "$METRICVALUE'"
+          }
+        }
+      },
+      "baselineStartTimeMs": "$BASELINESTARTTIME",
+      "canary": {
+        "log": {
+          "$LOGSVC": {
+            "$LOGKEY": "$LOGVALUE"
+          }
+        },
+        "metric": {
+          "$METRICSVC": {
+            "$METRICKEY": "$METRICVALUE"
+          }
+        }
+      },
+      "canaryStartTimeMs": "$CANARYSTARTTIME"
+    }
+  ],
+  "isJsonResponse": true
+}
