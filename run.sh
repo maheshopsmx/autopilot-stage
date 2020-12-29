@@ -1,0 +1,10 @@
+#!/bin/sh
+
+BSTIME="$1"
+CNRTTIME="$2"
+echo $BSTIME
+echo $CNRTTIME
+BASELINESTARTTIME=$(date -d "$BSTIME" +"%s")
+echo $BASELINESTARTTIME
+CANARYSTARTTIME=$(date -d "$CNRTTIME" +"%s")
+echo $CANARYSTARTTIME
