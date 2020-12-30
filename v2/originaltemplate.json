@@ -1,51 +1,51 @@
 {
-  "application": "$APPNAME",
+  "application": "APPNAME",
   "canaryConfig": {
     "canaryAnalysisConfig": {
-      "beginCanaryAnalysisAfterMins": "$CANARYTIME",
-      "canaryAnalysisIntervalMins": "$CANARYINTERVAL",
+      "beginCanaryAnalysisAfterMins": "CANARYTIME",
+      "canaryAnalysisIntervalMins": "CANARYINTERVAL",
       "notificationHours": []
     },
     "canaryHealthCheckHandler": {
-      "minimumCanaryResultScore": "$MINSCORE",
-      "minimumMetricsResultScore": "$MAXSCORE"
+      "minimumCanaryResultScore": "MINSCORE",
+      "minimumMetricsResultScore": "MAXSCORE"
     },
     "canarySuccessCriteria": {
-      "canaryResultScore": "$CANARYRESULT",
+      "canaryResultScore": "CANARYRESULT",
       "successMetricsResultScore": "SUCESSMETRICRESULT"
     },
     "combinedCanaryResultStrategy": "AGGREGATE",
-    "lifetimeHours": "$LIFETIME",
-    "name": "admin"
+    "lifetimeHours": "LIFETIME",
+    "name": "USERNAME"
   },
   "canaryDeployments": [
     {
       "baseline": {
         "log": {
-          "$LOGSVC": {
-            "$LOGKEY": "$LOGVALUE"
+          "LOGSVC": {
+            "LOGKEY": "LOGVALUE"
           }
         },
         "metric": {
-          "$METRICSVC": {
-            "$METRICKEY": "$METRICVALUE'"
+          "METRICSVC": {
+            "METRICKEY": "METRICVALUE'"
           }
         }
       },
-      "baselineStartTimeMs": "$BASELINESTARTTIME",
+      "baselineStartTimeMs": "BASELINESTARTTIME",
       "canary": {
         "log": {
-          "$LOGSVC": {
-            "$LOGKEY": "$LOGVALUE"
+          "LOGSVC": {
+            "LOGKEY": "LOGVALUE"
           }
         },
         "metric": {
-          "$METRICSVC": {
-            "$METRICKEY": "$METRICVALUE"
+          "METRICSVC": {
+            "METRICKEY": "METRICVALUE"
           }
         }
       },
-      "canaryStartTimeMs": "$CANARYSTARTTIME"
+      "canaryStartTimeMs": "CANARYSTARTTIME"
     }
   ],
   "isJsonResponse": true
