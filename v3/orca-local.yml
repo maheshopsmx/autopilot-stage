@@ -80,8 +80,8 @@ job:
             mapping: 'manifest.spec.template.spec.containers[0].args[14]'
             defaultValue: ""
           - label: LogCanaryValue
-            name: Log Value to filter
-            description: Value to filter with out "" like oes33-baseline-visibility 
+            name: Log Canary Value to filter
+            description: Value to filter with out "" like oes33-canary-visibility
             mapping: 'manifest.spec.template.spec.containers[0].args[15]'
             defaultValue: ""
           - label: Metric ServiceName
@@ -100,8 +100,8 @@ job:
             mapping: 'manifest.spec.template.spec.containers[0].args[18]'
             defaultValue: ""
           - label: MetricCanaryValue
-            name: Metric Value 
-            description: Value to filter with "" like container='oes33-baseline-oes-gate', namespace='oes33-baseline'
+            name: Metric Canary Value
+            description: Value to filter with "" like container='oes33-canary-oes-gate', namespace='oes33-baseline'
             mapping: 'manifest.spec.template.spec.containers[0].args[19]'
             defaultValue: ""
           - label: Baseline StartTime 
