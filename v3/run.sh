@@ -23,8 +23,14 @@ METRICSVC="$16"
 
 
 METRICKEY="$17"
-METRICBASEVALUE="$18"
-METRICCANARYVALUE="$19"
+
+RAWBASEVALUE="$18"
+RAWCANARYVALUE="$19"
+
+#name2=$(echo $RAWMETRICBASEVALUE | tr -d ' ')
+
+METRICBASEVALUE=$(echo $RAWBASEVALUE | tr -d ' ')
+METRICCANARYVALUE=$(echo $RAWCANARYVALUE | tr -d ' ')
 
 #=============================================
 BSTIME="$20"
@@ -61,7 +67,7 @@ then
 	 sed -i 's/USERNAME/'$USERNAME'/g' template.json
 	 
 	 JSONFILE=template.json
-	 
+	 cat template.json
 	 curl -vX POST -u $USERNAME:$PASSWORD $URL/autopilot/registerCanary -d @$JSONFILE --header "Content-Type: application/json" --insecure
 
  else
@@ -82,18 +88,24 @@ then
 	 sed -i 's/METRICSVC/'$METRICSVC'/g' template.json
 	 sed -i 's/METRICKEY/'$METRICKEY'/g' template.json
 	 sed -i 's/METRICBASEVALUE/'$METRICBASEVALUE'/g' template.json
+	 sed -i '26 s/, */, /g' template.json
 	 sed -i 's/METRICCANARYVALUE/'$METRICCANARYVALUE'/g' template.json
+         sed -i '34 s/, */, /g' template.json
 	 sed -i 's/BASELINESTARTTIME/'$BASELINESTARTTIME'/g' template.json
 	 sed -i 's/CANARYSTARTTIME/'$CANARYSTARTTIME'/g' template.json
 	 sed -i 's/USERNAME/'$USERNAME'/g' template.json
 	 
 	 JSONFILE=template.json
-	 
+	 cat template.json
 	 curl -vX POST -u $USERNAME:$PASSWORD $URL/autopilot/registerCanary -d @$JSONFILE --header "Content-Type: application/json" --insecure
 
  fi
  else
    echo "Pick both the template"
+   echo "$18"
+   echo "$19"
+         echo "METRICBASEVALUE $METRICBASEVALUE"
+         echo "METRICCANARYVALUE $METRICCANARYVALUE"
 	 cp both_log_metric_template.json template.json
 	 sed -i 's/APPNAME/'$APPNAME'/g' template.json
 	 sed -i 's/CANARYTIME/'$CANARYTIME'/g' template.json
@@ -109,14 +121,19 @@ then
 	 sed -i 's/LOGCANARYVALUE/'$LOGCANARYVALUE'/g' template.json
 	 sed -i 's/METRICSVC/'$METRICSVC'/g' template.json
 	 sed -i 's/METRICKEY/'$METRICKEY'/g' template.json
+         
 	 sed -i 's/METRICBASEVALUE/'$METRICBASEVALUE'/g' template.json
-	 sed -i 's/METRICCANARYVALUE/'$METRICCANARYVALUE'/g' template.json
+	 sed -i '31 s/, */, /g' template.json
+         sed -i 's/METRICCANARYVALUE/'$METRICCANARYVALUE'/g' template.json	 
+	 sed -i '44 s/, */, /g' template.json
+#	 sed -i 's/METRICBASEVALUE/'$METRICBASEVALUE'/g' template.json
+#	 sed -i 's/METRICCANARYVALUE/'$METRICCANARYVALUE'/g' template.json
 	 sed -i 's/BASELINESTARTTIME/'$BASELINESTARTTIME'/g' template.json
 	 sed -i 's/CANARYSTARTTIME/'$CANARYSTARTTIME'/g' template.json
 	 sed -i 's/USERNAME/'$USERNAME'/g' template.json
 	 
 	 JSONFILE=template.json
-	 
+	 cat template.json 
 	 curl -vX POST -u $USERNAME:$PASSWORD $URL/autopilot/registerCanary -d @$JSONFILE --header "Content-Type: application/json" --insecure
 
 fi 
