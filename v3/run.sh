@@ -102,10 +102,6 @@ then
  fi
  else
    echo "Pick both the template"
-   echo "$18"
-   echo "$19"
-         echo "METRICBASEVALUE $METRICBASEVALUE"
-         echo "METRICCANARYVALUE $METRICCANARYVALUE"
 	 cp both_log_metric_template.json template.json
 	 sed -i 's/APPNAME/'$APPNAME'/g' template.json
 	 sed -i 's/CANARYTIME/'$CANARYTIME'/g' template.json
@@ -136,4 +132,4 @@ then
 	 cat template.json 
 	 curl -vX POST -u $USERNAME:$PASSWORD $URL/autopilot/registerCanary -d @$JSONFILE --header "Content-Type: application/json" --insecure
 
-fi 
+fi
