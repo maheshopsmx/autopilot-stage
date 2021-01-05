@@ -1,0 +1,52 @@
+job:
+  preconfigured:
+    kubernetes:
+      - label: limitJobtest
+        type: demoLimitManifestJob
+        description: Simple limited stress manifest job
+        cloudProvider: kubernetes
+        propertyFile: limitjob-pod                                                  
+        account: default
+        waitForCompletion: true
+        application: spin
+        parameters:
+          - label: org
+            name: Organization name of the Git Account
+            description: Organization name of the Git Account
+            mapping: 'manifest.spec.template.spec.containers[0].args[0]'
+            defaultValue: 
+        manifest:
+          apiVersion: batch/v1
+          kind: Job
+          metadata:                                                                 
+            labels:                                                                 
+              spinnakerlabel: deljob                                                
+            name: limitjob-pod
+            namespace: oes
+          spec:
+            backoffLimit: 0
+            template:
+              spec:
+                restartPolicy: Never
+                containers:
+                  - name: limitjob-pod
+                    command:
+                      - bash
+                      - stress
+                    args:
+                       - '-v'
+                       - '--vm'
+                       - '1'
+                       - '--vm-bytes'
+                       - 250M
+                       - '--vm-hang'
+                       - '1'
+                       - '--timeout'
+                       - 60s
+                       - '--cpu'
+                       - '2'
+                    env:
+                      - name: FRUIT
+                        value: TOMATO
+                    image: 'polinux/stress'
+                    imagePullPolicy: Always
